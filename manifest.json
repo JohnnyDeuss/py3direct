@@ -1,0 +1,20 @@
+{
+  "manifest_version": 2,
+
+  "name": "py3direct",
+  "description": "Redirect the Python 2 docs to Python 3 docs",
+  "version": "1.0",
+
+  "background": {
+	"scripts": ["eventOnBeforeRequest.js"]
+  },
+  "icons": {"128": "icon128.png"},
+  "browser_action": {
+    "default_icon": "icon38.png"
+  },
+  "permissions": [
+    "webRequest",
+    "webRequestBlocking",
+    "https://docs.python.org/"
+  ]
+}
