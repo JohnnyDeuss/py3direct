@@ -1,2 +1,2 @@
 # py3direct
-Redirect all Python docs to the latest version.
+Chrome extension to redirect all Python docs to the latest version.
