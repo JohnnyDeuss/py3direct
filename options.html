@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+	<head>
+		<style>
+			body {
+				margin: 0;
+			    font-family: 'Open Sans', sans-serif;
+				color: #52606d;
+			    background: #f1f3f4;
+				font-size: 15px;
+				line-height: 1.5;
+			}
+			header {
+			    background: #3ceeb9;
+				padding: 75px 0;
+				margin: 0;
+				color: #fff;
+			}
+			header, main {
+				margin: 0 auto;
+				max-width: 1500px;
+				overflow-x: hidden;	
+				padding: 90px 0;
+			}
+			main {
+				background: #fff;
+			}
+			h1 {
+			    font-size: 51px;
+				margin: 0;
+				line-height: 1.1em;
+			}
+			h2 {
+			    font-size: 22px;
+				margin: 0;
+			}
+			main h2 {
+			    color: #2f353e;
+			}
+			.container {
+			    width: 90%;
+				max-width: 1050px;
+				margin: 0 auto;
+			}
+			button {
+			    background: #e0e0e1;
+				font-size: 15px;
+				line-height: 1;
+				display: inline-block;
+				padding: 13px 15px;
+				border-radius: 3px;
+				border: none;
+				width: 150px;
+				color: #fff;
+			}
+			button:hover {
+				background: #e7e7e8;
+			}
+			#save {
+    			background: #21dca4;
+			}
+			#save:hover {
+				background-color: #4ce4b7;
+			}
+			#save_options {
+				padding-top: 75px;
+			}
+			#save_feedback {
+				padding-left: 30px;
+				opacity: 0;
+				color: #e0e0e1;	
+				-webkit-transition: opacity 0s;
+			}
+			#save_feedback.saved, #save_feedback.fading {
+				opacity: 1;
+				color: #21dca4;
+			}
+			#save_feedback.fading {
+				opacity: 0;
+				-webkit-transition: opacity 3s ease-in-out;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<div class="container">
+				<h1>py3direct</h1>
+				<h2>Options page</h2>
+			</div>
+		</header>
+		<main>
+			<div class="container">
+				<div id="options">
+					<h2>Version to redirect to:</h2>
+					<select id="version">
+						<option value="3">Latest v3</option>
+						<option value="2">Latest v2</option>
+						<option value="3.5.2">3.5.2</option>
+						<option value="3.4">3.4</option>
+						<option value="3.3">3.3</option>
+						<option value="3.2">3.2</option>
+						<option value="2.7">2.7</option>
+						<option value="2.7">2.6</option>
+					</select>
+				<div>
+				<div id="save_options">
+					<button type="button" id="cancel">Cancel</button>
+					<button type="button" id="save">Save</button>
+					<span id="save_feedback">Options saved.</span>
+				</div>
+			</div>
+		</main>
+	</body>
+	<script src="options.js"></script>
+</html>
