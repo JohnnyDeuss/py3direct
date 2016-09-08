@@ -42,12 +42,14 @@ chrome.webRequest.onResponseStarted.addListener(
 		urls: ["https://docs.python.org/*"],
 		types: ["main_frame"]
 	});
-	
-// Remove cached files on install to ensure v2 docs aren't loaded from cache.
+
 chrome.runtime.onInstalled.addListener(function(details) {
+	// Remove cached files on install to ensure v2 docs aren't loaded from cache.
 	chrome.webRequest.handlerBehaviorChanged();
 	// Set v3 as default.
-	chrome.storage.sync.get({version: "3"}, function() {});
+	chrome.storage.sync.get({version: "3"}, function(items) {
+		chrome.storage.sync.set({version: items.version});
+	});
 });
 	  
 // Because the onBeforeRequest event is blocking, and because
