@@ -3,7 +3,6 @@ var version = "3";		// Dummy until we get the actual value from storage.
 chrome.webRequest.onBeforeRequest.addListener(
 	function(details) {
 		var url = URI(details.url);
-		console.log
 		if (!(url.hasSearch("redirect_fail") || url.hasSearch("v_before") || url.segment(0) == version)) {
 			url
 					.addSearch("v_before", url.segment(0))		// Keep original version in query string.

@@ -16,6 +16,17 @@
 				margin: 0;
 				color: #fff;
 			}
+			header img {
+				position: relative;
+				height: 100px;
+				margin-right: 50px;
+			}
+			@media only screen and (min-width: 1501px) {
+				header img {
+					position: absolute;
+					left: -164px;
+				}
+			}
 			header, main {
 				margin: 0 auto;
 				max-width: 1500px;
@@ -41,6 +52,9 @@
 			    width: 90%;
 				max-width: 1050px;
 				margin: 0 auto;
+				position: relative;
+				display: flex;
+				align-items: center;
 			}
 			button {
 			    background: #e0e0e1;
@@ -77,15 +91,18 @@
 			}
 			#save_feedback.fading {
 				opacity: 0;
-				-webkit-transition: opacity 3s ease-in-out;
+				-webkit-transition: opacity 3s ease-in-out; 
 			}
 		</style>
 	</head>
 	<body>
 		<header>
 			<div class="container">
-				<h1>py3direct</h1>
-				<h2>Options page</h2>
+				<img src="assets/icon128.png"/>
+				<div>
+					<h1>py3direct</h1>
+					<h2>Options page</h2>
+				</div>
 			</div>
 		</header>
 		<main>
