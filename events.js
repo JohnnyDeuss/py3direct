@@ -1,12 +1,22 @@
 var version = "3";		// Dummy until we get the actual value from storage.
 
+// URL rewriting.
 chrome.webRequest.onBeforeRequest.addListener(
 	function(details) {
 		var url = URI(details.url);
-		if (!(url.hasSearch("redirect_fail") || url.hasSearch("v_before") || url.segment(0) == version)) {
-			url
-					.addSearch("v_before", url.segment(0))		// Keep original version in query string.
-					.segment(0, version);					// Change to v3 docs.
+		// No previous redirection failure, hasn't been redirected from a different version.
+		if (!url.hasSearch("redirect_fail") && !url.hasSearch("v_before")) {
+			// There are two docs formats, in the long format the version is in the second segment, not the first.
+			// docs.python.org/<version>/* and docs.python.org/release/<version>/*
+			if (url.segment(0) == "release")
+				url.segment(0, "");
+			console.log(url.segment(0));
+			console.log(url.segment(0).match(/\d+(?:\.[\dp]+)*/));
+			if (url.segment(0).match(/dev|\d+(?:\.[\dp]+)*/) && url.segment(0) != version) {
+				url
+						.addSearch("v_before", url.segment(0))		// Keep original version in query string.
+						.segment(0, version);							// Change to different version.
+			}
 			return { redirectUrl: url.href() };
 		}
 	},
@@ -37,7 +47,7 @@ chrome.webRequest.onResponseStarted.addListener(
 chrome.runtime.onInstalled.addListener(function(details) {
 	chrome.webRequest.handlerBehaviorChanged();
 	// Set v3 as default.
-	chrome.storage.sync.get("version", function() {});
+	chrome.storage.sync.get({version: "3"}, function() {});
 });
 	  
 // Because the onBeforeRequest event is blocking, and because
@@ -45,8 +55,13 @@ chrome.runtime.onInstalled.addListener(function(details) {
 // track off settings by keeping it in memory and updating it
 // with events. If only there was an await to do blocking calls.
 chrome.storage.sync.get("version", function(items) { version = items.version; });
-
+// Keeping the version number up to date
 chrome.storage.onChanged.addListener(function(changes, namespace) {
 		if ("version" in changes)
-			version = changes["version"];
+			version = changes.version.newValue;
+	});
+
+// Open settings as browserAction
+chrome.browserAction.onClicked.addListener(function(tab) {
+		chrome.tabs.create({'url': 'chrome://extensions/?options=' + chrome.runtime.id});
 	});
