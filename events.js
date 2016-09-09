@@ -65,5 +65,5 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
 
 // Open settings as browserAction
 chrome.browserAction.onClicked.addListener(function(tab) {
-		chrome.tabs.create({'url': 'chrome://extensions/?options=' + chrome.runtime.id});
+		chrome.runtime.openOptionsPage();
 	});

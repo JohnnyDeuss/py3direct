@@ -5,61 +5,38 @@
 			body {
 				margin: 0;
 			    font-family: 'Open Sans', sans-serif;
-				color: #52606d;
-			    background: #f1f3f4;
 				font-size: 15px;
 				line-height: 1.5;
+				background: #fff;
 			}
 			header {
 			    background: #3ceeb9;
-				padding: 75px 0;
-				margin: 0;
 				color: #fff;
 			}
-			header img {
-				position: relative;
-				height: 100px;
-				margin-right: 50px;
-			}
-			header, main {
-				margin: 0 auto;
+			header, #options {
 				max-width: 1500px;
 				overflow-x: hidden;	
-				padding: 90px 0;
-			}
-			main {
-				background: #fff;
-			}
-			h1 {
-			    font-size: 51px;
+				padding: 1em;
 				margin: 0;
-				line-height: 1.1em;
 			}
-			h2 {
+			header h1 {
 			    font-size: 22px;
 				margin: 0;
 			}
 			main h2 {
 			    color: #2f353e;
-			}
-			.container {
-			    width: 90%;
-				max-width: 1050px;
-				margin: 0 auto;
-				position: relative;
-				display: flex;
-				align-items: center;
+				margin: 0;
 			}
 			button {
 			    background: #e0e0e1;
 				font-size: 15px;
 				line-height: 1;
 				display: inline-block;
-				padding: 13px 15px;
-				border-radius: 3px;
+				padding: 0.8em 1em;
 				border: none;
-				width: 150px;
+				width: 50%;
 				color: #fff;
+				margin: 0;
 			}
 			button:hover {
 				background: #e7e7e8;
@@ -74,7 +51,9 @@
 				padding-top: 75px;
 			}
 			#save_feedback {
-				padding-left: 30px;
+				font-size: 15px;
+				display: block;
+				padding-left: 50%;
 				opacity: 0;
 				color: #e0e0e1;	
 				-webkit-transition: opacity 0s;
@@ -87,151 +66,127 @@
 				opacity: 0;
 				-webkit-transition: opacity 3s ease-in-out; 
 			}
-			@media only screen and (max-width: 407px) {
-				header img, header h1 {
-					display: none;
-				}
-				header, main {
-					padding: 1em 0;
-				}
-				#save_options {
-					padding: 1em 0 0 0;
-				}
-				#save_feedback {
-					padding: 0;
-				}
-			}
-			@media only screen and (min-width: 408px) and (min-width: 1501px) {
-				header img {
-					position: absolute;
-					left: -164px;
-				}
+			#save_options {
+				font-size: 0;
+				padding: 1em 0 0 0;
 			}
 		</style>
 	</head>
 	<body>
 		<header>
-			<div class="container">
-				<img src="assets/icon128.png"/>
-				<div>
-					<h1>py3direct</h1>
-					<h2>Options page</h2>
-				</div>
-			</div>
+			<h1>Options</h1>
 		</header>
 		<main>
-			<div class="container">
-				<div id="options">
-					<h2>Version to redirect to:</h2>
-					<select id="version">
-						<optgroup label="Dynamic">
-							<option value="3">Latest v3</option>
-							<option value="2">Latest v2</option>
-							<option value="dev">Latest dev</option>
-						</optGroup>
-						<optgroup label="Major releases">
-							<option value="3.4">3.4</option>
-							<option value="3.3">3.3</option>
-							<option value="3.2">3.2</option>
-							<option value="2.7">2.7</option>
-							<option value="2.6">2.6</option>
-						</optGroup>	
-						<optgroup label="Minor v3 releases">
-							<option value="release/3.5.2">3.5.2</option>
-							<option value="release/3.5.1">3.5.1</option>
-							<option value="release/3.5.0">3.5.0</option>
-							<option value="release/3.4.5">3.4.5</option>
-							<option value="release/3.4.4">3.4.4</option>
-							<option value="release/3.4.3">3.4.3</option>
-							<option value="release/3.4.2">3.4.2</option>
-							<option value="release/3.4.1">3.4.1</option>
-							<option value="release/3.3.6">3.3.6</option>
-							<option value="release/3.3.5">3.3.5</option>
-							<option value="release/3.3.4">3.3.4</option>
-							<option value="release/3.3.3">3.3.3</option>
-							<option value="release/3.3.2">3.3.2</option>
-							<option value="release/3.3.1">3.3.1</option>
-							<option value="release/3.3.0">3.3.0</option>
-							<option value="release/3.2.6">3.2.6</option>
-							<option value="release/3.2.5">3.2.5</option>
-							<option value="release/3.2.4">3.2.4</option>
-							<option value="release/3.2.3">3.2.3</option>
-							<option value="release/3.2.2">3.2.2</option>
-							<option value="release/3.2.1">3.2.1</option>
-							<option value="release/3.1.5">3.1.5</option>
-							<option value="release/3.1.4">3.1.4</option>
-							<option value="release/3.1.3">3.1.3</option>
-							<option value="release/3.1.2">3.1.2</option>
-							<option value="release/3.1.1">3.1.1</option>
-							<option value="release/3.0.1">3.0.1</option>
-						</optGroup>	
-						<optgroup label="Minor/old v2 releases">
-							<option value="release/2.7.12">2.7.12</option>
-							<option value="release/2.7.11">2.7.11</option>
-							<option value="release/2.7.10">2.7.10</option>
-							<option value="release/2.7.9">2.7.9</option>
-							<option value="release/2.7.8">2.7.8</option>
-							<option value="release/2.7.7">2.7.7</option>
-							<option value="release/2.7.6">2.7.6</option>
-							<option value="release/2.7.5">2.7.5</option>
-							<option value="release/2.7.4">2.7.4</option>
-							<option value="release/2.7.3">2.7.3</option>
-							<option value="release/2.7.2">2.7.2</option>
-							<option value="release/2.7.1">2.7.1</option>
-							<option value="release/2.6.9">2.6.9</option>
-							<option value="release/2.6.8">2.6.8</option>
-							<option value="release/2.6.7">2.6.7</option>
-							<option value="release/2.6.6">2.6.6</option>
-							<option value="release/2.6.5">2.6.5</option>
-							<option value="release/2.6.4">2.6.4</option>
-							<option value="release/2.6.3">2.6.3</option>
-							<option value="release/2.6.2">2.6.2</option>
-							<option value="release/2.6.1">2.6.1</option>
-							<option value="release/2.5.4">2.5.4</option>
-							<option value="release/2.5.3">2.5.3</option>
-							<option value="release/2.5.2">2.5.2</option>
-							<option value="release/2.5.1">2.5.1</option>
-							<option value="release/2.5">2.5</option>
-							<option value="release/2.4.4">2.4.4</option>
-							<option value="release/2.4.3">2.4.3</option>
-							<option value="release/2.4.2">2.4.2</option>
-							<option value="release/2.4.1">2.4.1</option>
-							<option value="release/2.4">2.4</option>
-							<option value="release/2.3.5">2.3.5</option>
-							<option value="release/2.3.4">2.3.4</option>
-							<option value="release/2.3.3">2.3.3</option>
-							<option value="release/2.3.2">2.3.2</option>
-							<option value="release/2.3.1">2.3.1</option>
-							<option value="release/2.3">2.3</option>
-							<option value="release/2.2.3">2.2.3</option>
-							<option value="release/2.2.2">2.2.2</option>
-							<option value="release/2.2.1">2.2.1</option>
-							<option value="release/2.2p1">2.2p1</option>
-							<option value="release/2.2">2.2</option>
-							<option value="release/2.1.3">2.1.3</option>
-							<option value="release/2.1.2">2.1.2</option>
-							<option value="release/2.1.1">2.1.1</option>
-							<option value="release/2.1">2.1</option>
-							<option value="release/2.0.1">2.0.1</option>
-							<option value="release/2.0">2.0</option>
-						</optGroup>
-						<optgroup label="v1 releases">
-							<option value="release/1.6">1.6</option>
-							<option value="release/1.5.2p2">1.5.2p2</option>
-							<option value="release/1.5.2p1">1.5.2p1</option>
-							<option value="release/1.5.2">1.5.2</option>
-							<option value="release/1.5.1p1">1.5.1p1</option>
-							<option value="release/1.5.1">1.5.1</option>
-							<option value="release/1.5">1.5</option>
-							<option value="release/1.4">1.4</option>
-						</optGroup>
-					</select>
-				<div>
-				<div id="save_options">
-					<button type="button" id="cancel">Cancel</button>
-					<button type="button" id="save">Save</button>
-					<span id="save_feedback">Options saved.</span>
-				</div>
+			<div id="options">
+				<h2>Version to redirect to:</h2>
+				<select id="version">
+					<optgroup label="Dynamic">
+						<option value="3">Latest v3</option>
+						<option value="2">Latest v2</option>
+						<option value="dev">Latest dev</option>
+					</optGroup>
+					<optgroup label="Major releases">
+						<option value="3.4">3.4</option>
+						<option value="3.3">3.3</option>
+						<option value="3.2">3.2</option>
+						<option value="2.7">2.7</option>
+						<option value="2.6">2.6</option>
+					</optGroup>	
+					<optgroup label="Minor v3 releases">
+						<option value="release/3.5.2">3.5.2</option>
+						<option value="release/3.5.1">3.5.1</option>
+						<option value="release/3.5.0">3.5.0</option>
+						<option value="release/3.4.5">3.4.5</option>
+						<option value="release/3.4.4">3.4.4</option>
+						<option value="release/3.4.3">3.4.3</option>
+						<option value="release/3.4.2">3.4.2</option>
+						<option value="release/3.4.1">3.4.1</option>
+						<option value="release/3.3.6">3.3.6</option>
+						<option value="release/3.3.5">3.3.5</option>
+						<option value="release/3.3.4">3.3.4</option>
+						<option value="release/3.3.3">3.3.3</option>
+						<option value="release/3.3.2">3.3.2</option>
+						<option value="release/3.3.1">3.3.1</option>
+						<option value="release/3.3.0">3.3.0</option>
+						<option value="release/3.2.6">3.2.6</option>
+						<option value="release/3.2.5">3.2.5</option>
+						<option value="release/3.2.4">3.2.4</option>
+						<option value="release/3.2.3">3.2.3</option>
+						<option value="release/3.2.2">3.2.2</option>
+						<option value="release/3.2.1">3.2.1</option>
+						<option value="release/3.1.5">3.1.5</option>
+						<option value="release/3.1.4">3.1.4</option>
+						<option value="release/3.1.3">3.1.3</option>
+						<option value="release/3.1.2">3.1.2</option>
+						<option value="release/3.1.1">3.1.1</option>
+						<option value="release/3.0.1">3.0.1</option>
+					</optGroup>	
+					<optgroup label="Minor/old v2 releases">
+						<option value="release/2.7.12">2.7.12</option>
+						<option value="release/2.7.11">2.7.11</option>
+						<option value="release/2.7.10">2.7.10</option>
+						<option value="release/2.7.9">2.7.9</option>
+						<option value="release/2.7.8">2.7.8</option>
+						<option value="release/2.7.7">2.7.7</option>
+						<option value="release/2.7.6">2.7.6</option>
+						<option value="release/2.7.5">2.7.5</option>
+						<option value="release/2.7.4">2.7.4</option>
+						<option value="release/2.7.3">2.7.3</option>
+						<option value="release/2.7.2">2.7.2</option>
+						<option value="release/2.7.1">2.7.1</option>
+						<option value="release/2.6.9">2.6.9</option>
+						<option value="release/2.6.8">2.6.8</option>
+						<option value="release/2.6.7">2.6.7</option>
+						<option value="release/2.6.6">2.6.6</option>
+						<option value="release/2.6.5">2.6.5</option>
+						<option value="release/2.6.4">2.6.4</option>
+						<option value="release/2.6.3">2.6.3</option>
+						<option value="release/2.6.2">2.6.2</option>
+						<option value="release/2.6.1">2.6.1</option>
+						<option value="release/2.5.4">2.5.4</option>
+						<option value="release/2.5.3">2.5.3</option>
+						<option value="release/2.5.2">2.5.2</option>
+						<option value="release/2.5.1">2.5.1</option>
+						<option value="release/2.5">2.5</option>
+						<option value="release/2.4.4">2.4.4</option>
+						<option value="release/2.4.3">2.4.3</option>
+						<option value="release/2.4.2">2.4.2</option>
+						<option value="release/2.4.1">2.4.1</option>
+						<option value="release/2.4">2.4</option>
+						<option value="release/2.3.5">2.3.5</option>
+						<option value="release/2.3.4">2.3.4</option>
+						<option value="release/2.3.3">2.3.3</option>
+						<option value="release/2.3.2">2.3.2</option>
+						<option value="release/2.3.1">2.3.1</option>
+						<option value="release/2.3">2.3</option>
+						<option value="release/2.2.3">2.2.3</option>
+						<option value="release/2.2.2">2.2.2</option>
+						<option value="release/2.2.1">2.2.1</option>
+						<option value="release/2.2p1">2.2p1</option>
+						<option value="release/2.2">2.2</option>
+						<option value="release/2.1.3">2.1.3</option>
+						<option value="release/2.1.2">2.1.2</option>
+						<option value="release/2.1.1">2.1.1</option>
+						<option value="release/2.1">2.1</option>
+						<option value="release/2.0.1">2.0.1</option>
+						<option value="release/2.0">2.0</option>
+					</optGroup>
+					<optgroup label="v1 releases">
+						<option value="release/1.6">1.6</option>
+						<option value="release/1.5.2p2">1.5.2p2</option>
+						<option value="release/1.5.2p1">1.5.2p1</option>
+						<option value="release/1.5.2">1.5.2</option>
+						<option value="release/1.5.1p1">1.5.1p1</option>
+						<option value="release/1.5.1">1.5.1</option>
+						<option value="release/1.5">1.5</option>
+						<option value="release/1.4">1.4</option>
+					</optGroup>
+				</select>
+			</div>
+			<div id="save_options">
+				<span id="save_feedback">Options saved.</span>
+				<button type="button" id="cancel">Cancel</button>
+				<button type="button" id="save">Save</button>
 			</div>
 		</main>
 	</body>
