@@ -10,8 +10,6 @@ chrome.webRequest.onBeforeRequest.addListener(
 			// docs.python.org/<version>/* and docs.python.org/release/<version>/*
 			if (url.segment(0) == "release")
 				url.segment(0, "");
-			console.log(url.segment(0));
-			console.log(url.segment(0).match(/\d+(?:\.[\dp]+)*/));
 			if (url.segment(0).match(/dev|\d+(?:\.[\dp]+)*/) && url.segment(0) != version) {
 				url
 						.addSearch("v_before", url.segment(0))		// Keep original version in query string.
@@ -27,7 +25,7 @@ chrome.webRequest.onBeforeRequest.addListener(
 	["blocking"]);
 	
 // Redirect back to the original if we get an error after the first redirect.
-chrome.webRequest.onResponseStarted.addListener(
+chrome.webRequest.onHeadersReceived.addListener(
 	function(details) {
 		var url = URI(details.url);
 		if (details.statusCode > 400 && url.hasSearch("v_before")) {
@@ -35,13 +33,14 @@ chrome.webRequest.onResponseStarted.addListener(
 					.segment(0, (url.search(true))["v_before"])
 					.removeSearch("v_before")
 					.addSearch("redirect_fail", "1");
-			chrome.tabs.update(details.tabId, {url: url.href()});
+			return { redirectUrl: url.href() };
 		}
 	},
 	{
 		urls: ["https://docs.python.org/*"],
 		types: ["main_frame"]
-	});
+	},
+	["blocking"]);
 
 chrome.runtime.onInstalled.addListener(function(details) {
 	// Remove cached files on install to ensure v2 docs aren't loaded from cache.
