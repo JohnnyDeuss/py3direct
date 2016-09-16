@@ -8,6 +8,13 @@
 	"background": {
 		"scripts": ["uri.js", "events.js"]
 	},
+	"content_scripts": [
+		{
+		  "matches": ["https://docs.python.org/*?*redirect_fail=1*"],
+		  "js": ["show_redirect_fail.js"],
+		  "run_at": "document_end"
+		}
+	],
 	"options_ui": {
 		"page": "options.html"
 	},
