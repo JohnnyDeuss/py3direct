@@ -24,7 +24,10 @@ function insertFailMessage(failMessage) {
 	chrome.storage.sync.get("version", function(items) {
 		var pageVersion = getPageVersion();
 		if (pageVersion !== null) {
-			var failMessage = createFailMessage(items.version, pageVersion);
+			preferredVersion = items.version;
+			if (items.version.startsWith("release/"))
+				preferredVersion = preferredVersion.substring(8, preferredVersion.length);
+			var failMessage = createFailMessage(preferredVersion, pageVersion);
 			insertFailMessage(failMessage);
 		}
 	});
