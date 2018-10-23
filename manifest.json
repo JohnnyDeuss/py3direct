@@ -1,12 +1,10 @@
 {
 	"manifest_version": 2,
-
 	"name": "py3direct",
 	"description": "Redirect the Python 2 docs to Python 3 docs",
-	"version": "1.0",
-
+	"version": "1.1",
 	"background": {
-		"scripts": ["uri.js", "events.js"]
+		"scripts": ["events.js"]
 	},
 	"content_scripts": [
 		{
@@ -19,7 +17,7 @@
 		"page": "options.html"
 	},
 	"icons": {"128": "assets/icon128.png"},
-	"browser_action": {
+		"browser_action": {
 	"default_icon": "assets/icon38.png"
 	},
 	"permissions": [
@@ -27,6 +25,7 @@
 		"webRequest",
 		"webRequestBlocking",
 		"tabs",
-		"https://docs.python.org/*"
+		"*://docs.python.org/",
+		"https://www.python.org/doc/versions/"
 	]
 }

@@ -1,5 +1,7 @@
 function getPageVersion() {
 	var versionSelector = document.querySelector(".version_switcher_placeholder>select");
+	if (versionSelector === null)
+		return null;
 	return versionSelector.options[versionSelector.selectedIndex].text;
 }
 
@@ -18,10 +20,12 @@ function insertFailMessage(failMessage) {
 	firstSection.insertBefore(failMessage, afterHeader);
 }
 
-(function show_redirect_fail() {
+(function showRedirectFail() {
 	chrome.storage.sync.get("version", function(items) {
 		var pageVersion = getPageVersion();
-		var failMessage = createFailMessage(items.version, pageVersion);
-		insertFailMessage(failMessage);
+		if (pageVersion !== null) {
+			var failMessage = createFailMessage(items.version, pageVersion);
+			insertFailMessage(failMessage);
+		}
 	});
 })();
