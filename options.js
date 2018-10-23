@@ -50,7 +50,6 @@ function load_versions() {
 				document.getElementById("loading_msg").classList.add("hidden");
 				restore_options();
 				// Enable the save button.
-				document.getElementById('save').disabled = false;
 			}
 			else {
 				// Show an error message, because loading failed.
@@ -93,6 +92,7 @@ function restore_options() {
 }
 
 
-document.addEventListener('DOMContentLoaded', load_versions);
-document.getElementById('save').addEventListener('click', save_options);
-document.getElementById('cancel').addEventListener('click', () => { restore_options(); window.close(); });
+document.addEventListener('DOMContentLoaded', () => {
+	load_versions();
+	document.getElementById('version').addEventListener('change', save_options);
+});

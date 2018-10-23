@@ -30,36 +30,9 @@
 			    color: #2f353e;
 				margin: 0;
 			}
-			button {
-			    background: #e0e0e1;
-				font-size: 15px;
-				line-height: 1;
-				display: inline-block;
-				padding: 0.8em 1em;
-				border: none;
-				width: 50%;
-				color: #fff;
-				margin: 0;
-			}
-			button:hover {
-				background: #e7e7e8;
-			}
-			#save {
-    			background: #21dca4;
-			}
-			#save:hover {
-				background-color: #4ce4b7;
-			}
-			#save[disabled] {
-    			background: #b9b9b9;
-			}
-			#save_options {
-				padding-top: 75px;
-			}
 			#save_feedback {
 				font-size: 15px;
 				display: block;
-				padding-left: 50%;
 				opacity: 0;
 				color: #e0e0e1;	
 				-webkit-transition: opacity 0s;
@@ -71,13 +44,6 @@
 			#save_feedback.fading {
 				opacity: 0;
 				-webkit-transition: opacity 3s ease-in-out; 
-			}
-			#save_options {
-				font-size: 0;
-				padding: 1em 0 0 0;
-			}
-			#loading_msg {
-
 			}
 			#error_msg {
 				color: red;
@@ -102,11 +68,7 @@
 					<optgroup id="opts-py2" label="Python 2 releases"></optGroup>
 					<optgroup id="opts-py1" label="Python 1 releases"></optGroup>
 				</select>
-			</div>
-			<div id="save_options">
 				<span id="save_feedback">Options saved.</span>
-				<button type="button" id="cancel">Cancel</button>
-				<button type="button" id="save" disabled>Save</button>
 			</div>
 		</main>
 	</body>
