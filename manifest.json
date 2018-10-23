@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "py3direct",
-	"description": "Redirect the Python 2 docs to Python 3 docs",
+	"description": "Redirect the Python docs",
 	"version": "1.1",
 	"background": {
 		"scripts": ["events.js"]
