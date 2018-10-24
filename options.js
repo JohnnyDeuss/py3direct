@@ -1,3 +1,15 @@
+// Detect which browser API to use.
+if (chrome)
+	browser = chrome;
+else {
+	// Make the storage API consistent.
+	browser.storage.sync._get = browser.storage.sync.get;
+	browser.storage.sync.get = (keys, callback) => {
+		let gettingItem = browser.storage.sync._get(keys);
+		gettingItem.then(callback);
+	}
+}
+
 function insert_option(opt_group_el, link_el) {
 	// Get the url section relevant to the version redirection.
 	var val = (new URL(link_el.href)).pathname;
@@ -66,13 +78,13 @@ function load_versions() {
 	// Restore the previous options.
 }
 
-// Saves options to chrome.storage.
+// Saves options to browser.storage.
 function save_options() {
 	var version = document.getElementById('version').value;
 	var feedback = document.getElementById('save_feedback');
 	feedback.innerHTML = "Saving...";
 	feedback.className = "";
-	chrome.storage.sync.set({version: version}, function() {
+	browser.storage.sync.set({version: version}, function() {
 		// Give user feedback.
 		feedback.innerHTML = "Options saved.";
 		feedback.className = "saved";
@@ -83,10 +95,10 @@ function save_options() {
 }
 
 // Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
+// stored in browser.storage.
 function restore_options() {
 	// Use default value v3.
-	chrome.storage.sync.get("version", function(items) {
+	browser.storage.sync.get("version", function(items) {
 		document.getElementById('version').value = items.version;
 	});
 }

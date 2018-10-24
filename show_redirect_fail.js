@@ -1,8 +1,10 @@
 function getPageVersion() {
-	var versionSelector = document.querySelector(".version_switcher_placeholder>select");
-	if (versionSelector === null)
-		return null;
-	return versionSelector.options[versionSelector.selectedIndex].text;
+	var url = new URL(window.location.href);
+	segments = url.pathname.split("/");
+	if (segments[1] == "release")
+		return segments[2];
+	else
+		return segments[1];
 }
 
 function createFailMessage(preferredVersion, pageVersion) {
@@ -21,7 +23,19 @@ function insertFailMessage(failMessage) {
 }
 
 (function showRedirectFail() {
-	chrome.storage.sync.get("version", function(items) {
+	// Detect which browser API to use.
+	if (chrome)
+		browser = chrome;
+	else {
+		// Make the storage API consistent.
+		browser.storage.sync._get = browser.storage.sync.get;
+		browser.storage.sync.get = (keys, callback) => {
+			let gettingItem = browser.storage.sync._get(keys);
+			gettingItem.then(callback);
+		}
+	}
+
+	browser.storage.sync.get("version", function(items) {
 		var pageVersion = getPageVersion();
 		if (pageVersion !== null) {
 			preferredVersion = items.version;

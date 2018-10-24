@@ -2,13 +2,18 @@
 	"manifest_version": 2,
 	"name": "py3direct",
 	"description": "Redirect the Python docs to a version of your choosing",
-	"version": "1.1.1",
+	"version": "1.1.2",
+	"applications": {
+		"gecko": {
+			"id": "py3direct@deuss.xyz"
+		}
+	},
 	"background": {
 		"scripts": ["events.js"]
 	},
 	"content_scripts": [
 		{
-		  "matches": ["https://docs.python.org/*?*redirect_fail=1*"],
+		  "matches": ["https://docs.python.org/*redirect_fail=1*"],
 		  "js": ["show_redirect_fail.js"],
 		  "run_at": "document_end"
 		}
