@@ -1,9 +1,5 @@
 var version = "3";		// Dummy until we get the actual value from storage.
 
-function swap_version() {
-
-}
-
 // URL rewriting.
 chrome.webRequest.onBeforeRequest.addListener(
 	function(details) {
@@ -64,18 +60,12 @@ chrome.runtime.onInstalled.addListener(function(details) {
 	});
 });
 	  
-// Because the onBeforeRequest event is blocking, and because
-// JavaScript doesn't do synchronous code very well. We keep
-// track off settings by keeping it in memory and updating it
-// with events. If only there was an await to do blocking calls.
+// Because the onBeforeRequest event is blocking, and because JavaScript doesn't
+// do synchronous code very well. We keep track of settings by keeping it in
+// memory and updating it with events.
 chrome.storage.sync.get("version", function(items) { version = items.version; });
 // Keeping the version number up to date
 chrome.storage.onChanged.addListener(function(changes, namespace) {
 	if ("version" in changes)
 		version = changes.version.newValue;
-});
-
-// Open settings as browserAction
-chrome.browserAction.onClicked.addListener(function(tab) {
-	chrome.runtime.openOptionsPage();
 });
